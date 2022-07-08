@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { GetClientInterface } from '../entities/getClient';
-import { ClientList } from '../entities/getClientList';
 
 @Injectable({
   providedIn: 'root',

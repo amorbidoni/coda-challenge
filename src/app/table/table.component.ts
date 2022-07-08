@@ -95,7 +95,6 @@ export class TableComponent implements OnInit {
   handleModalEditTable(e: { showModal: boolean; reloadPage: boolean }) {
     this.shownEditTable = e.showModal;
     e.reloadPage && this.tableComp.loadItems();
-    console.log(e.reloadPage);
   }
   titleModal: string = 'Editar usuario   ';
   confirmationModal: boolean = false;
