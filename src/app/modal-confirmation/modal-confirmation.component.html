@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="overlay" (click)="closeModal(false)"></div>
+  <div class="modal">
+    <div class="modal__title">
+      <h2>{{ title }}</h2>
+    </div>
+    <div class="modal__data">
+      <p>{{ description }}</p>
+    </div>
+    <div class="modal__btns">
+      <button class="btn btn__red" (click)="closeModal(false)">Cancelar</button>
+      <button class="btn btn__blue" (click)="closeModal(true)">Aceptar</button>
+    </div>
+  </div>
+</div>

@@ -4,17 +4,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MiaAuthInterceptor, MiaAuthModule, MIA_AUTH_PROVIDER } from '@agencycoda/mia-auth';
+import {
+  MiaAuthInterceptor,
+  MiaAuthModule,
+  MIA_AUTH_PROVIDER,
+} from '@agencycoda/mia-auth';
 import { environment } from 'src/environments/environment';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MiaCoreModule, MIA_GOOGLE_STORAGE_PROVIDER } from '@agencycoda/mia-core';
+import {
+  MiaCoreModule,
+  MIA_GOOGLE_STORAGE_PROVIDER,
+} from '@agencycoda/mia-core';
 import { MiaTableModule } from '@agencycoda/mia-table';
 import { MiaFormModule } from '@agencycoda/mia-form';
 import { MiaLoadingModule } from '@agencycoda/mia-loading';
+import { TableComponent } from './table/table.component';
+import { EditableTableComponent } from './editable-table/editable-table.component';
+import { ModalConfirmationComponent } from './modal-confirmation/modal-confirmation.component';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TableComponent,
+    EditableTableComponent,
+    ModalConfirmationComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,24 +43,28 @@ import { MiaLoadingModule } from '@agencycoda/mia-loading';
     MiaFormModule,
   ],
   providers: [
-    { 
-      provide: MIA_AUTH_PROVIDER, 
+    {
+      provide: MIA_AUTH_PROVIDER,
       useValue: {
-        baseUrl: environment.baseUrl
-      }
+        baseUrl: environment.baseUrl,
+      },
+    },
+    {
+      provide: MatDialogRef,
+      useValue: {},
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MiaAuthInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: MIA_GOOGLE_STORAGE_PROVIDER,
       useValue: {
-        bucket: environment.cloudStorageBucket
-      }
-    }
+        bucket: environment.cloudStorageBucket,
+      },
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

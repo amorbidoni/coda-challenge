@@ -1,0 +1,23 @@
+<div>
+  <button (click)="handleAddUser()">Agregar usuario</button>
+
+  <mia-table
+    #tableComp
+    [config]="tableConfig"
+    [mockData]="mockData"
+  ></mia-table>
+</div>
+<div class="modal" *ngIf="shownEditTable">
+  <app-editable-table
+    [modalTitle]="titleModal"
+    [user]="selectedUserEdit"
+    (newCloseModalEvent)="handleModalEditTable($event)"
+  ></app-editable-table>
+</div>
+<div class="confirmaiton-modal" *ngIf="confirmationModal">
+  <app-modal-confirmation
+    title="¿Desea eliminar el usuario?"
+    description="Una vez eliminado no podrá cancelar la operación."
+    (newModalConfirmationEvent)="handleConfirmationModal($event)"
+  ></app-modal-confirmation>
+</div>
